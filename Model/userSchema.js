@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     require: true,
     unique: true,
     //if the input value is not proper email id the  it throw the error and returs invalid email
-    //is email is a method in valdator which check whether the input is a proper email id or not
+    //is email is a method in validator which check whether the input is a proper email id or not
     validator(value) {
       if (!validator.isEmail(value)) {
       }

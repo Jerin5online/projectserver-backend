@@ -95,3 +95,22 @@ exports.login = async(req,res)=>{
 
   }
 }
+
+//edit pofile
+
+exports.editUser=async(req,res)=>{
+const userId = req.payload
+const{username,email,password,github,linkedin,profile} = req.body
+console.log(req.body);
+const profileImage = req.file?req.file.filename:profile
+try {
+  const updateUser = await users.findByIdAndUpdate({_id:userId},{username,email,password,gitHub:github,LinkedIn:linkedin,profile:profileImage},{new:true})
+
+await updateUser.save()
+res.status(200).json(updateUser)
+
+} catch (err) {
+  res.status(401).json(err)
+  
+}
+}

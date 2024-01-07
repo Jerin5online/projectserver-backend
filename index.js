@@ -37,6 +37,12 @@ pfserver.use(express.json())
 
 pfserver.use(router);
 
+//server use uploads folder
+//first arg-the way inwhich other application should use this folder
+//sec arg - export that folder - express.static
+
+pfserver.use('/uploads',express.static('./uploads'))
+
 // 7 customize the ports - by default - 3000
 
 const PORT = 4000 || process.env;
